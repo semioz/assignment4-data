@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 from typing import Any
 
-from cs336_data.deduplicate import exact_line_deduplication
+from cs336_data.deduplicate import exact_line_deduplication, minhash_deduplication
 from cs336_data.extract import extract_text_from_html_bytes
 from cs336_data.harmful_content import classify_nsfw, classify_toxic_speech
 from cs336_data.language_id import identify_language
@@ -61,4 +61,6 @@ def run_minhash_deduplication(
     jaccard_threshold: float,
     output_directory: os.PathLike,
 ):
-    raise NotImplementedError
+    return minhash_deduplication(
+        input_files, num_hashes, num_bands, ngrams, jaccard_threshold, output_directory
+    )
