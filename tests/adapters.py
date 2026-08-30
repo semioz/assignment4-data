@@ -4,14 +4,15 @@ import os
 from typing import Any
 
 from cs336_data.extract import extract_text_from_html_bytes
+from cs336_data.language_id import identify_language
 
 
 def run_extract_text_from_html_bytes(html_bytes: bytes) -> str:
     return extract_text_from_html_bytes(html_bytes)
 
 
-def run_identify_language(text: str) -> tuple[Any, float]:
-    raise NotImplementedError
+def run_identify_language(text: str) -> tuple[str, float]:
+    return identify_language(text)
 
 
 def run_mask_emails(text: str) -> tuple[str, int]:
